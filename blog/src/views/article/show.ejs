@@ -1,0 +1,40 @@
+<%- include("../layouts/main-top.js") %>
+
+<div class="article-full">
+    <div class="image">
+        <img src="/<%= article.image %>"/>
+    </div>
+
+    <p class="article-text"><%= article.text %></p>
+
+    <% if (comment.length) { %>
+        <h3 class="article-text">Comments</h3>
+        <div class="article-comment">
+            <table>
+                <tr>
+                    <th>Text</th>
+                    <th>Create Date</th>
+                </tr>
+                <tr>
+                    <% for (let i = 0; i < comment.length; i++) { %>
+                <tr>
+                    <td>
+                        <p><%= comment[i].text %></p>
+                    </td>
+                    <td>
+                        <p><%= comment[i].createdAt %></p>
+                    </td>
+                </tr>
+                <% } %>
+                </tr>
+            </table>
+        </div>
+    <% } %>
+</div>
+
+<div style="margin-top: 10px">
+    <button><a href="/comment/createComment/<%= article.id %>">New Comment</a></button>
+    <button><a href="/article">Back to list</a></button>
+</div>
+
+<%- include("../layouts/main-bottom.js") %>

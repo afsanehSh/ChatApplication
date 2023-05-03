@@ -1,0 +1,29 @@
+<header>
+    <div class="menu">
+        <% var links = [{href: '/', label: 'Home'}, {
+            href: '/article',
+            label: 'Articles'
+        }, {href: '/about', label: 'About'}, {
+            href: '/contact',
+            label: 'Contact'
+        }, {href: '/chat', label: 'Chatroom'}, {href: '/groupChat', label: 'Group Chat'}] %>
+        <ul>
+            <% for (var link of links) { %>
+                <li>
+                    <a href="<%= link.href %>"> <%= link.label %> </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="menu">
+        <ul>
+            <% if (locals.user) { %>
+                <li><%= user.username %></li>
+                <li><a href="/logout" class="action logout">logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
+        </ul>
+    </div>
+</header>
